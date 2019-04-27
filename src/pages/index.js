@@ -21,7 +21,7 @@ const Index = ({ dispatch, sniffs }) => {
 
   return (
     <>
-      <Sider width={300} className={styles.leftSider}>
+      <Sider width={500} className={styles.leftSider}>
         <h2>Sniffs</h2>
         <SniffsTree onSelect={handleSelect} sniffs={sniffs.list} />
       </Sider>

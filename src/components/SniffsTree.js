@@ -5,7 +5,7 @@ const SniffsTree = ({ onSelect, sniffs }) => {
   const renderTreeNodes = data => data.map((item) => {
     if (item.children) {
       return (
-        <TreeNode title={item.title} key={item.title}>
+        <TreeNode title={item.standard} key={item.key}>
           {renderTreeNodes(item.children)}
         </TreeNode>
       );
