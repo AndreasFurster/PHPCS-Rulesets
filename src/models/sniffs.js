@@ -1,11 +1,24 @@
-function forEachSniff(sniffs, callback) {
-  for(let sniff in sniffs) {
+const forEachSniff = (sniffs, callback) => {
+  sniffs.forEach(sniff => {
     callback(sniff);
     if(sniff.children) {
-      forEachSniff(sniffs.children, callback);
+      forEachSniff(sniff.children, callback);
     }
-  }
+  })
 }
+
+// const findSniffByKey = (sniffs, key) => {
+//   for(let sniff in sniffs) {
+//     if(sniff.key == key) return sniff;
+
+//     if(sniff.children) {
+//       var result = forEachSniff(sniffs.children, callback);
+//       if(result) return result;
+//     }
+//   }
+
+//   return false;
+// }
 
 export default {
   namespace: 'sniffs',
@@ -14,16 +27,29 @@ export default {
     selected: null
   },
   reducers: {
-    'select'(state, { payload: id }) {
+    'select'(state, { payload: keys }) {
+      let selected;
       forEachSniff(state.list, sniff => {
-        if(sniff.id === id) {
-          state.selected = sniff;
+        if(sniff.key === keys[0]) {
+          selected = sniff;
         }
       });
 
-      console.log(id)
+      return { ...state, selected };
+    },
+    'actionChange'(state, { payload: action }) {
+      let selected = state.selected;
+      let list = state.list;
 
-      return state;
+      selected.action = action;
+
+      forEachSniff(list, sniff => {
+        if(sniff.key === selected.key) {
+          sniff = selected
+        }
+      });
+
+      return { ...state, list, selected };
     },
   },
 };

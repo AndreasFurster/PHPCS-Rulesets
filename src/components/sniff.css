@@ -1,0 +1,16 @@
+.codeComparisons {
+  margin-bottom: 16px;
+}
+
+.codeComparisons .codeBlock {
+  font-family: consolas;
+  font-size: 15px;
+}
+
+.codeComparisons .codeBlock em {
+  font-weight: 600;
+}
+
+.actions button {
+  margin-right: 8px;
+}

@@ -1,8 +1,48 @@
-const Sniff = ({ sniff }) => {
+import styles from './sniff.css'
+import { Row, Col, Card, Button } from 'antd';
+import { red, volcano } from '@ant-design/colors';
+
+const Sniff = ({ sniff, onActionChange }) => {
+  let codeComparisons = [];
+  if(sniff.code_comparison) {
+    codeComparisons.push(<h2 key="title">Code comparisons</h2>);
+
+    sniff.code_comparison.forEach((comparison, comparisonIndex) => {
+      if(!comparison.code) return;
+      let codes = [];
+      comparison.code.forEach((code, codeIndex) => {
+        let codeHtml = code.content.replace(/\ /g, "&nbsp;").replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+        codes.push(
+          <Col span={8} key={codeIndex}>
+            <Card title={code.title}>
+              <div className={styles.codeBlock} dangerouslySetInnerHTML={{__html: codeHtml}}></div>
+            </Card>
+          </Col>
+        )
+      })
+
+      codeComparisons.push(<Row key={comparisonIndex} className={styles.codeComparisons} gutter={16}>{codes}</Row>);
+    })
+  }
+
+  const CheckWithError = () => onActionChange("CheckWithError")
+  const CheckWithWarning = () => onActionChange("CheckWithWarning")
+  const DontCheck = () => onActionChange("DontCheck")
+  const Skip = () => onActionChange("Skip")
+
   return (
-    <div>
+    <>
       <h1>{sniff.title}</h1>
-    </div>
+      <p>{sniff.standard}</p>
+      {codeComparisons}
+      <div className={styles.actions}>
+        <Button onClick={CheckWithError} type="primary" size="large" icon="exclamation-circle" style={{ backgroundColor: red[5], border: red[6]}}>Check &amp; show as error</Button>
+        <Button onClick={CheckWithWarning} type="primary" size="large" icon="warning" style={{ backgroundColor: volcano[5], border: volcano[6]}}>Check &amp; show as warning</Button>
+        <Button onClick={DontCheck} type="primary" size="large" icon="check-square">Don't check</Button>
+        <Button onClick={Skip} type="secondary" size="large" icon="question">Skip</Button>
+      </div>
+    </>
   );
 };
 
