@@ -1,17 +1,10 @@
 import styles from './index.css';
 import { connect } from 'dva';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import SniffsTree from '../components/SniffsTree';
-
-const { Header, Content, Sider } = Layout;
+import { Layout, Menu } from 'antd';
+const { Header } = Layout;
 
 const BasicLayout = ({ children, dispatch, sniffs }) => {
-  function handleDelete(id) {
-    dispatch({
-      type: 'sniffs/delete',
-      payload: id,
-    });
-  }
+
 
   return (
     <Layout>
@@ -29,20 +22,7 @@ const BasicLayout = ({ children, dispatch, sniffs }) => {
         </Menu>
       </Header>
       <Layout>
-        <Sider width={300} className={styles.leftSider}>
-          <h2>Sniffs</h2>
-          <SniffsTree onDelete={handleDelete} sniffs={sniffs} />
-        </Sider>
-        <Layout className={styles.innerLayout}>
-          <Breadcrumb className={styles.breadcrumb}>
-            <Breadcrumb.Item>PSR2</Breadcrumb.Item>
-            <Breadcrumb.Item>Array</Breadcrumb.Item>
-            <Breadcrumb.Item>Close whenever</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content className={styles.mainContent}>
-            {children}
-          </Content>
-        </Layout>
+        {children}
       </Layout>
     </Layout>
   );
