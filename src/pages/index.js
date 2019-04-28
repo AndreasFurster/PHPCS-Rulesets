@@ -30,6 +30,9 @@ const Index = ({ dispatch, sniffs, selectedSniff }) => {
       breadcrumbItems.push(<Breadcrumb.Item key={standard}>{standard}</Breadcrumb.Item>)
     })
   }
+  else {
+    content = <h1>Select an item in the left menu to start.</h1>
+  }
 
   return (
     <>

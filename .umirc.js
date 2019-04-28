@@ -8,9 +8,9 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: false,
-      title: 'phpcs-ruleset-builder',
+      title: 'PHPCS Ruleset Builder',
       dll: false,
-      
+
       routes: {
         exclude: [
           /models\//,

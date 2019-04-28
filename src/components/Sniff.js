@@ -33,7 +33,7 @@ const Sniff = ({ sniff, onActionChange }) => {
 
   return (
     <>
-      <h1>{sniff.title}</h1>
+      <h2>{sniff.title}</h2>
       <p>{sniff.standard}</p>
       {codeComparisons}
       <div className={styles.actions}>

@@ -4,8 +4,6 @@ import { Layout, Menu } from 'antd';
 const { Header } = Layout;
 
 const BasicLayout = ({ children, dispatch, sniffs }) => {
-
-
   return (
     <Layout>
       <Header>
@@ -17,8 +15,6 @@ const BasicLayout = ({ children, dispatch, sniffs }) => {
           className={styles.topMenu}
         >
           <Menu.Item key="builder">Builder</Menu.Item>
-          <Menu.Item key="github">Github</Menu.Item>
-          <Menu.Item key="support">Support</Menu.Item>
         </Menu>
       </Header>
       <Layout>
