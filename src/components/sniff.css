@@ -1,4 +1,12 @@
-.codeComparisons {
+.backgroundIcon {
+  font-size: 350px !important;
+  position: absolute;
+  opacity: 0.2;
+  right: -80px;
+  top: 100px;
+}
+
+.codeComparisonsCol {
   margin-bottom: 16px;
 }
 

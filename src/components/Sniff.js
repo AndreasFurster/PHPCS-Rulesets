@@ -1,8 +1,13 @@
 import styles from './sniff.css'
-import { Row, Col, Card, Button } from 'antd';
-import { red, volcano } from '@ant-design/colors';
+import { Row, Col, Card, Button, Icon } from 'antd';
+import { red, volcano, blue } from '@ant-design/colors';
 
 const Sniff = ({ sniff, onActionChange }) => {
+  let icon;
+  if(sniff.action === "CheckWithError") icon = <Icon type="exclamation-circle" theme="twoTone" twoToneColor={ red[5] } className={styles.backgroundIcon} />;
+  else if(sniff.action === "CheckWithWarning") icon = <Icon type="warning" theme="twoTone" twoToneColor={ volcano[4] } className={styles.backgroundIcon} />;
+  else if(sniff.action === "DontCheck") icon = <Icon type="check-square" theme="twoTone" twoToneColor={ blue[5] } className={styles.backgroundIcon} />;
+
   let codeComparisons = [];
   if(sniff.code_comparison) {
     codeComparisons.push(<h2 key="title">Code comparisons</h2>);
@@ -14,7 +19,7 @@ const Sniff = ({ sniff, onActionChange }) => {
         let codeHtml = code.content.replace(/\ /g, "&nbsp;").replace(/(?:\r\n|\r|\n)/g, '<br>');
 
         codes.push(
-          <Col span={8} key={codeIndex}>
+          <Col span={12} key={codeIndex} className={styles.codeComparisonsCol}>
             <Card title={code.title}>
               <div className={styles.codeBlock} dangerouslySetInnerHTML={{__html: codeHtml}}></div>
             </Card>
@@ -22,7 +27,17 @@ const Sniff = ({ sniff, onActionChange }) => {
         )
       })
 
-      codeComparisons.push(<Row key={comparisonIndex} className={styles.codeComparisons} gutter={16}>{codes}</Row>);
+      let hr;
+      if(comparisonIndex !== sniff.code_comparison.length - 1) {
+        hr = <hr />;
+      }
+
+      codeComparisons.push(
+        <>
+          <Row key={comparisonIndex} className={styles.codeComparisons} gutter={16}>{codes}</Row>
+          {hr}
+        </>
+      );
     })
   }
 
@@ -33,6 +48,7 @@ const Sniff = ({ sniff, onActionChange }) => {
 
   return (
     <>
+      {icon}
       <h2>{sniff.title}</h2>
       <p>{sniff.standard}</p>
       {codeComparisons}
