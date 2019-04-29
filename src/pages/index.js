@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { Layout, Breadcrumb } from 'antd';
 import SniffsTree from '../components/SniffsTree';
 import Sniff from '../components/Sniff';
+import RulesetXml from '../components/RulesetXml';
 
 const { Content, Sider } = Layout;
 
@@ -36,7 +37,7 @@ const Index = ({ dispatch, sniffs, selectedSniff }) => {
 
   return (
     <>
-      <Sider width={500} className={styles.leftSider}>
+      <Sider width={400} className={styles.leftSider}>
         <h2>Sniffs</h2>
         <SniffsTree onSelect={handleSelect} sniffs={sniffs} />
       </Sider>
@@ -48,6 +49,10 @@ const Index = ({ dispatch, sniffs, selectedSniff }) => {
           {content}
         </Content>
       </Layout>
+      <Sider width={600} className={styles.rightSider}>
+        <h2>Ruleset XML</h2>
+        <RulesetXml sniffs={sniffs} />
+      </Sider>
     </>
   );
 }
