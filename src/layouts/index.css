@@ -1,7 +1,15 @@
+.topHeader {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
 .brandName  {
   margin-right: 37px;
   float: left;
   color: white;
+  margin-bottom: 0;
 }
 
 .topMenu {

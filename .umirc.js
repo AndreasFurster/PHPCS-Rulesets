@@ -8,7 +8,7 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: false,
-      title: 'PHPCS Ruleset Builder',
+      title: 'PHPCS Rulesets',
       dll: false,
 
       routes: {

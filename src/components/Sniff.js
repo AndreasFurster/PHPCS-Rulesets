@@ -20,7 +20,7 @@ const Sniff = ({ sniff, onActionChange }) => {
 
         codes.push(
           <Col span={12} key={codeIndex} className={styles.codeComparisonsCol}>
-            <Card title={code.title}>
+            <Card title={code.title} className={styles.codeComparisonCard}>
               <div className={styles.codeBlock} dangerouslySetInnerHTML={{__html: codeHtml}}></div>
             </Card>
           </Col>
@@ -34,7 +34,7 @@ const Sniff = ({ sniff, onActionChange }) => {
 
       codeComparisons.push(
         <>
-          <Row key={comparisonIndex} className={styles.codeComparisons} gutter={16}>{codes}</Row>
+          <Row key={comparisonIndex} className={styles.codeComparisons} gutter={23}>{codes}</Row>
           {hr}
         </>
       );

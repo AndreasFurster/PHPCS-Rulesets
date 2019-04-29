@@ -6,8 +6,8 @@ const { Header } = Layout;
 const BasicLayout = ({ children, dispatch, sniffs }) => {
   return (
     <Layout>
-      <Header>
-        <h1 className={styles.brandName}>PHPCS Ruleset Builder</h1>
+      <Header className={styles.topHeader}>
+        <h1 className={styles.brandName}>PHPCS Rulesets</h1>
         <Menu
           theme="dark"
           mode="horizontal"

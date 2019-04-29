@@ -1,12 +1,25 @@
-
 .leftSider, .rightSider {
   background-color: #fff;
-  padding: 16px 24px;
+  margin-top: 64px;
+  padding: 16px 24px 0 24px;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.leftSider {
+  left: 0;
+}
+
+.rightSider {
+  right: 0;
 }
 
 .innerLayout {
   position: relative;
-  margin: 0 24px 24px;
+  margin: 0 624px 0 424px;
+  padding-top: 64px;
+  min-height: 100vh;
 }
 
 .breadcrumb {
