@@ -49,6 +49,7 @@ const Sniff = ({ sniff, onActionChange }) => {
   return (
     <>
       {icon}
+      <p>{sniff.key}</p>
       <h2>{sniff.title}</h2>
       <p>{sniff.standard}</p>
       {codeComparisons}

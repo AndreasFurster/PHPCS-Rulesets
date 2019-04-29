@@ -12,8 +12,8 @@
 
 .codeComparisonCard {
   background-color: rgba(255, 255, 255, 0.5);
-  -webkit-box-shadow: 0 12px 15px rgb(233, 238, 241);;
-  box-shadow: 0 12px 15px rgb(233, 238, 241);;
+  -webkit-box-shadow: 0 12px 15px rgba(59, 81, 95, 0.21);
+  box-shadow: 0 12px 15px rgba(59, 81, 95, 0.21);
 }
 
 .codeComparisons .codeBlock {
